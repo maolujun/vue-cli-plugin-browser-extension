@@ -28,7 +28,7 @@ module.exports = (api, options) => {
   const componentOptions = pluginOptions.componentOptions
   const extensionReloaderOptions = pluginOptions.extensionReloaderOptions
   const packageJson = require(api.resolve('package.json'))
-  const isProduction = process.env.NODE_ENV === 'production'
+  const isProduction = ['production', 'test'].includes(process.env.NODE_ENV)
   const keyFile = api.resolve('key.pem')
   const hasKeyFile = keyExists(keyFile)
   const contentScriptEntries = Object.keys((componentOptions.contentScripts || {}).entries || {})
